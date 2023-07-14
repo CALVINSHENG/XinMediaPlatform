@@ -1,0 +1,143 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+//這 assembly指令使指定程序集可用於您的模板代碼
+//其方式與 Visual Studio 項目的引用部分相同。
+//您不需要包含對 System.dll 的引用，它會自動引用。 
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Configuration" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="MySql.Data.dll" #>
+//這 import指令允許您使用類型而不使用它們的完全限定名稱，
+//方式與 using普通程序文件中的指令。
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="MySql.Data.MySqlClient" #>
+// 直接引入命名空間T4會視為有效套件
+// 這部分的引入是給成為有效物件時使用
+// 檢視 .cs 文件如果有發生錯誤，VS也會提示
+
+#region SonarLint Disabled 放置區域
+#pragma warning disable VSSpell001 // Spell Check
+#pragma warning disable IDE1006 // 命名樣式
+#pragma warning disable S101 // Types should be named in PascalCase
+#pragma warning disable CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
+#endregion
+
+using Dapper.Contrib.Extensions;
+using MicroServiceCoreLibrary.Attributes;
+using MicroServiceCoreResposity.Entity;
+using System;
+using System.ComponentModel;
+<#
+try
+{
+	///讀取文字設定檔
+	///string HostName = Environment.MachineName;
+	string HostName = "TArticleEntityTEST";
+	string FileName = this.Host.ResolvePath(@"./Configs/" + HostName + ".txt");
+	IEnumerable<string> ReadLinesList = File.ReadLines(FileName);
+	string[] ReadAllLinesList = File.ReadAllLines(FileName);
+
+	////參數設定區
+	string ConnectionConfig = "";								///參數1：資料庫連線
+	string TableName = "";											///參數2：資料表名稱(來源TXT請加上單引號)
+	string NameSpace = "";											///參數3：命名空間路徑定義
+	string ModelFunctionDescription = "";					///參數4：模型類別功能說明
+	string ModelName = "";										///參數5：模型名稱
+	string ParentModelName = "";								///參數6：繼承/封裝類別名稱
+	string PackageModelType = "";								///參數7：使用繼承/封裝方式
+	
+	//衍生變數
+	string DataCheckName = "";									///資料檢核名稱(DataCheck_+資料表名稱)
+
+	//一般變數
+	string CsharpDataType = "";
+	string SchemaName = "";
+	string RealTableName = "";
+	bool lackBrief = false;
+	
+	//取參數對應
+	//來源設定檔案*.txt空空白排行數會發生索引錯誤
+	int idx = 1;
+	foreach (string item in ReadAllLinesList) {
+		switch(idx)
+		{
+			case 1:
+				//Connection String Name(資料庫連線)
+				ConnectionConfig = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 2:
+				//Table Name(資料表名稱)
+				TableName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				SchemaName = "[Table(\"" + TableName + "\")]";
+				break;
+			case 3:
+				//NameSpace Name(命名空間)
+				NameSpace = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 4:
+				//Model Function Description(模型類別功能說明)
+				ModelFunctionDescription = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 5:
+				//Model Name(模型名稱)
+				ModelName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 6:
+				//Parent Model Name(繼承/封裝類別名稱)
+				ParentModelName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 7:
+				//Package Model Type(使用繼承(i)/封裝(e)方式)
+				PackageModelType = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+		}
+		idx++;
+	}
+
+if(PackageModelType == "")
+{
+	ParentModelName = "";
+}
+
+	//DataCheckName(DataCheck_+資料表名稱)
+	DataCheckName = "DataCheck_" + ModelName;
+
+	//MySqlConnection connection = new(ConnectionConfig);
+	//connection.Open();
+}
+catch(Exception ex)
+{
+	throw new Exception(ex.Message);
+}
+#>
+
+<#+
+/* 
+* 編輯作者：ADD BY CALVIN AT 2023/03/23
+* 說　　明：移除指定字元符號
+* 備　　註：
+* 引　　用：
+* ░░░░░░░░░
+* 修改歷程：
+*  2023/03/23 初版
+*  2023/03/23 EDIT BY CALVIN
+* 	說明：
+* 	備註：
+*/
+private static string RemoveSign(string str)
+{
+	str = str.Replace(" ", "");
+	str = str.Replace("/", "");
+	return str;
+}
+#>
