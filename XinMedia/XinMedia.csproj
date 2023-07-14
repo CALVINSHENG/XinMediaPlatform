@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <!--
+        * 編輯作者：REMARK BY CALVIN AT 2023/03/28
+        * 說明：啟用預覽功能
+        * 備註：HTTP/3
+        -->
+        <!--包Container會發生錯誤，先停用
+        <EnablePreviewFeatures>true</EnablePreviewFeatures>
+        -->
+        <!--<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>-->
+    </PropertyGroup>
+    <!--
+編輯作者：ADD BY CALVIN AT 2022/12/22
+說　　明：讓專案產生註解的XML 並加入到Swagger中
+　　　　　　　 就會在編譯的時候 在組態的同名資料夾下
+　　　　　　　 會有檔名與專案同名的XML文件
+　　　　　　　 這個XML文件的內容就是程式碼的註解
+備　　註：
+　　　　　　　 option.SwaggerDoc對應
+　　　　　　　 options.SwaggerEndpoint的第二格參數
+引　　用：
+┇┇┇┇┇┇┇┇┇┇ ┇┇┇┇┇┇┇┇┇┇ ┇┇┇┇┇┇┇┇┇┇ ┇┇┇
+修改歷程：
+　　2022/12/22初版
+-->
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Subrouts\Enums\**" />
+      <Compile Remove="Subrouts\Helpers\**" />
+      <Compile Remove="Subrouts\Subrouts\**" />
+      <Content Remove="Subrouts\Enums\**" />
+      <Content Remove="Subrouts\Helpers\**" />
+      <Content Remove="Subrouts\Subrouts\**" />
+      <EmbeddedResource Remove="Subrouts\Enums\**" />
+      <EmbeddedResource Remove="Subrouts\Helpers\**" />
+      <EmbeddedResource Remove="Subrouts\Subrouts\**" />
+      <None Remove="Subrouts\Enums\**" />
+      <None Remove="Subrouts\Helpers\**" />
+      <None Remove="Subrouts\Subrouts\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Remove="nlog.config" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="nlog.config">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="ClosedXML" Version="0.102.0" />
+        <PackageReference Include="HotChocolate.AspNetCore" Version="12.15.2" />
+        <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="12.15.2" />
+        <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.15.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.12" />
+        <PackageReference Include="NLog" Version="5.2.2" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MicroServiceCoreConfiguration\MicroServiceCoreConfiguration.csproj" />
+        <ProjectReference Include="..\MicroServiceCoreLibrary\MicroServiceCoreLibrary.csproj" />
+        <ProjectReference Include="..\MicroServiceCoreResposity\MicroServiceCoreResposity.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Subrouts\BackEnd\" />
+      <Folder Include="Subrouts\FrontEnd\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Models\BackEnd\T4\TArticleEntity.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>TArticleEntity.cs</LastGenOutput>
+      </None>
+      <None Update="Models\BackEnd\T4\TextTemplate.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>TextTemplate.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+</Project>
