@@ -1,0 +1,108 @@
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.AssemblyReference.cache
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.GeneratedMSBuildEditorConfig.editorconfig
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfoInputs.cache
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfo.cs
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CoreCompileInputs.cache
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.Win61.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msdia140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msvcp140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\x86\vcruntime140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\KernelTraceControl.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msdia140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msvcp140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140_1.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\KernelTraceControl.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msdia140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msvcp140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140_1.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\TraceReloggerLib.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\Dia2Lib.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\OSExtensions.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll.config
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.deps.json
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.pdb
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.pdb
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.pdb
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CopyComplete
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\refint\MicroServiceCoreResposity.dll
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.pdb
+E:\Eldplat\CloudService\Azure\Azure\MicroServiceCoreResposity\obj\Debug\net6.0\ref\MicroServiceCoreResposity.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.Win61.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msdia140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msvcp140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\vcruntime140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\KernelTraceControl.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msdia140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msvcp140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140_1.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\KernelTraceControl.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msdia140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msvcp140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140_1.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\TraceReloggerLib.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\Dia2Lib.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\OSExtensions.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll.config
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.deps.json
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.pdb
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.pdb
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.pdb
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.AssemblyReference.cache
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.GeneratedMSBuildEditorConfig.editorconfig
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfoInputs.cache
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfo.cs
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CoreCompileInputs.cache
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CopyComplete
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\refint\MicroServiceCoreResposity.dll
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.pdb
+E:\XinMediaPlat\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\ref\MicroServiceCoreResposity.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\KernelTraceControl.Win61.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msdia140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\msvcp140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\x86\vcruntime140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\KernelTraceControl.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msdia140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\msvcp140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\amd64\vcruntime140_1.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\KernelTraceControl.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msdia140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\msvcp140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\arm64\vcruntime140_1.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\TraceReloggerLib.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\Dia2Lib.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\OSExtensions.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll.config
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.deps.json
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreResposity.pdb
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreConfiguration.pdb
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\bin\Debug\net6.0\MicroServiceCoreLibrary.pdb
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.AssemblyReference.cache
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfoInputs.cache
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.AssemblyInfo.cs
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CoreCompileInputs.cache
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.csproj.CopyComplete
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\refint\MicroServiceCoreResposity.dll
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\MicroServiceCoreResposity.pdb
+C:\Users\calvinsheng\source\repos\Azure DevOps\XinMediaPlatform\MicroServiceCoreResposity\obj\Debug\net6.0\ref\MicroServiceCoreResposity.dll
