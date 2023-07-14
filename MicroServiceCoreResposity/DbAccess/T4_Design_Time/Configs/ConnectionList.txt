@@ -1,0 +1,33 @@
+﻿T4 成功與失敗的連線格式
+///(成功)Data Source=ITTC-04509-0088; Initial Catalog=ELDPLAT; User ID=sa;Password=!qaz#EDCLionTravel789
+///(成功)conn.ConnectionString = @"Server=ITTC-04509-0088;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true";
+///(失敗)conn.ConnectionString = @"Server=ITTC-04509-0088\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true";
+///(失敗)conn.ConnectionString = @"127.0.0.1;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=True";
+
+//盛鉦凱
+ITTC-04509-0088
+Data Source=ITTC-04509-0088; Initial Catalog=ELDPLAT; User ID=sa;Password=!qaz#EDCLionTravel789
+//江柏宏
+ITTC-04509-0041
+Server=ITTC-04509-0041\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+//呂軒宇
+ITTC-04509-0033
+Server=ITTC-04509-0033\\SQLEXPRESS;Database=EldPlat;User ID=sa;Password=ssmsLion220123
+//盧珈潁
+ITTC-04509-0090
+Server=ITTC-04509-0090;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+//姜昱光
+ITTC-04509-0055
+Server=ITTC-04509-0055\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+//邱上庭
+ITTC-04509-0096
+Server=127.0.0.1;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=True
+//魏傳駿
+ITTC-04509-0043
+Server=ITTC-04509-0043\\SQLEXPRESS;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+//張家馨
+ITTC-04509-0095
+Server=localhost;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+//倪楷翔
+ITTC-04509-0074
+Server=ITTC-04509-0074;Database=ELDPLAT;User ID=sa;Password=paulLion00F822

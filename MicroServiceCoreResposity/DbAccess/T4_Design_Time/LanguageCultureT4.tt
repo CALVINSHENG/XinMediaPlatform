@@ -1,0 +1,279 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+///這 assembly指令使指定程序集可用於您的模板代碼
+///其方式與 Visual Studio 項目的引用部分相同。
+///您不需要包含對 System.dll 的引用，它會自動引用。 
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Configuration" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="Newtonsoft.Json.dll" #>
+///這 import指令允許您使用類型而不使用它們的完全限定名稱，
+///方式與 using普通程序文件中的指令。
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ import namespace="Newtonsoft.Json.Linq" #>
+
+
+/// 直接引入命名空間T4會視為有效套件
+/// 這部分的引入是給成為有效物件時使用
+/// 檢視 .cs 文件如果有發生錯誤，VS也會提示
+using MicroServiceCoreLibrary.Attributes;
+using System;
+using System.ComponentModel;
+<#
+try
+{
+	string FileName = this.Host.ResolvePath("./Configs/LanguageCultureT4.txt");
+	IEnumerable<string> ReadLinesList = File.ReadLines(FileName);
+	string[] ReadAllLinesList = File.ReadAllLines(FileName);
+	string ConnectionConfig = "";	///行2
+	string TableName = "";				///行4
+
+	///string JsonFileName = this.Host.ResolvePath("LanguageCultureT4.json");
+	///JObject parsed = JObject.Parse(JsonFileName);
+	///string strConnection = (string)parsed["Connection"][0];
+	
+	int idx = 1;
+	///讀取偶數行即為設定值
+	foreach (string item in ReadLinesList) {
+		switch(idx)
+		{
+			case 2:
+				ConnectionConfig = item;
+				break;
+			case 4:
+				TableName = item;
+				break;
+		}
+		idx++;
+	}
+
+	idx = 1;
+	foreach (string item in ReadAllLinesList) {
+		switch(idx)
+		{
+			case 2:
+				ConnectionConfig = item;
+				break;
+			case 4:
+				TableName = item;
+				break;
+		}
+		idx++;
+	}
+
+	///string templateFileName = Path.GetFileNameWithoutExtension(this.Host.TemplateFile);
+    ///string settingsPath = this.Host.ResolvePath($"{templateFileName}.json");
+    ///string settingsJson = File.ReadAllText(settingsPath);
+    ///var datasource = JObject.Parse(settingsJson);
+	///string array = (string)datasource.SelectToken("d");
+
+	string HostName = Environment.MachineName;
+
+	using (SqlConnection conn = new SqlConnection())
+	{
+		///string table = "view_backend";
+
+		///ORDER BY id,sort
+		string sql = @"SELECT * FROM @table WITH(NOLOCK) 
+		";
+		string sqlSFC = @"
+						SELECT 
+						  column_name 
+						FROM 
+						  information_schema.columns WITH(NOLOCK) 
+						WHERE 
+						  table_name = @tableName
+					";
+
+		conn.ConnectionString = ConnectionConfig;
+		///(失敗)conn.ConnectionString = @"Server=ITTC-04509-0088\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true";
+		///(成功)conn.ConnectionString = @"Server=ITTC-04509-0088;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true";
+		///(失敗)conn.ConnectionString = @"127.0.0.1;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=True";
+		
+		conn.Open();
+
+		///盛鉦凱
+		///Data Source=ITTC-04509-0088; Initial Catalog=ELDPLAT; User ID=sa;Password=!qaz#EDCLionTravel789
+		///江柏宏
+		///Server=ITTC-04509-0041\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+		///呂軒宇
+		///Server=ITTC-04509-0033\\SQLEXPRESS;Database=EldPlat;User ID=sa;Password=ssmsLion220123
+		///盧珈潁
+		///Server=ITTC-04509-0090;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+		///姜昱光
+		///Server=ITTC-04509-0055\\SQLEXPRESS;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+		///邱上庭
+		///Server=127.0.0.1;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=True
+		///魏傳駿
+		///Server=ITTC-04509-0043\\SQLEXPRESS;Database=Eldplat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+		///張家馨
+		///Server=localhost;Database=EldPlat;Encrypt=False;Trusted_Connection=True;MultipleActiveResultSets=true
+		///倪楷翔
+		///Server=ITTC-04509-0074;Database=ELDPLAT;User ID=sa;Password=paulLion00F822
+		
+		List<string> strs = new List<string>();
+		List<string> strsInfor = new List<string>();
+		List<string> strsEnum = new List<string>();
+		bool lackBrief = false;
+		
+		sql = sql.Replace("@table", TableName);
+		SqlCommand cmd = new SqlCommand(sql, conn);
+		cmd.Parameters.Clear();
+		SqlDataReader dr = cmd.ExecuteReader();
+		DataTable dt = new DataTable();
+		dt.Load(dr);
+
+		strsInfor.Add($"public const int DataCountForDataCheck = {dt.Rows.Count};");
+		foreach (DataRow row in dt.Rows)
+		{
+			if (string.IsNullOrEmpty(row["zh_tw"].ToString().Trim()))
+			{
+				lackBrief = true;
+			}
+			strs.Add($"///<summary>\r\n/// {row["zh_tw"]}\r\n/// {HostName}\r\n/// {ConnectionConfig}\r\n/// {TableName}\r\n///</summary>\r\n[ColumnsLanguage(Name = \"{row["id"]}\", TypeName = \"{row["type"]}\", DefaultValue = \"{row["id"]}^{row["id"]}_{row["sort"]}^{row["type"]}^{row["page"]}^{row["zh_tw"]}^{row["en_us"]}\")]\r\n public string {RemoveSign(row["id"].ToString() + "_" + row["type"].ToString() + "_" + row["sort"].ToString())} {"{get; set;} = \"" + row["id"] + "_" + row["sort"] + "^" + row["type"] + "^" + row["page"] + "^" + row["zh_tw"] + "^" + row["en_us"] + "\";"}");
+		}
+		sqlSFC = sqlSFC.Replace("@tableName", TableName);
+		SqlCommand cmdSFC = new SqlCommand(sqlSFC, conn);
+		cmd.Parameters.Clear();
+		SqlDataReader drSFC = cmd.ExecuteReader();
+		DataTable dtSFC = new DataTable();
+		dtSFC.Load(drSFC);
+		strsInfor.Add($"\r\npublic const int FieldCountForDataCheck = {dtSFC.Columns.Count};");
+		if (lackBrief)
+		{
+			strsInfor.Add($"\r\npublic const bool LackSummaryForDataCheck = true;");
+		}
+		else
+		{
+			strsInfor.Add($"\r\npublic const bool LackSummaryForDataCheck = false;");
+		}
+		int index = 0;
+		foreach (DataColumn column in dtSFC.Columns)
+		{
+			strsEnum.Add($"///<summary>\r\n/// {column.ColumnName}\r\n/// </summary>\r\n[Description(\"{index}\")] {column.ColumnName},");
+			index++;
+		}
+#>
+namespace MicroServiceCoreResposity.DbAccess.T4_Design_Time
+{
+	// Disable the warning.
+#pragma warning disable S101
+	//警告	S101 Rename class 'LanguageCultureT4' 
+	//to match pascal case naming rules, 
+	//consider using 'LanguageCultureT4'.	MicroServiceCoreLibrary
+
+	//
+	// Code that uses obsolete API.
+	// ...
+
+	// Re-enable the warning.
+	//#pragma warning restore SYSLIB0021
+
+	/// <summary>
+	/// 訊息代碼資料表資訊
+	/// 針對資料、以及欄位檢核
+	/// </summary>
+	public static class LanguageCultureT4DataCount
+	{	/// <summary>
+		/// 資料總筆數
+		/// </summary>
+		<#= string.Join("\r\n    ",strsInfor)#>
+	}
+	/// <summary>
+	/// 訊息代碼簡述<br/>
+	/// 可以VendorLangModelTtFile.[代碼]時檢視
+	/// </summary>
+	///public class VendorLanguageCode
+	public class VendorLanguageCode
+	{
+		<#= string.Join("\r\n    ",strs)#>
+	}
+
+	/// <summary>
+	/// 語系列舉<br/>
+	///  ENGLISH: "en_us",<br/>
+	///  CHINESE: "zh_tw",<br/>
+	///  THAI: "th_th",<br/>
+	/// </summary>
+	public enum VendorLanguageList
+	{
+		<#= string.Join("\r\n    ",strsEnum)#>
+	}
+}
+<#
+		conn.Close();
+conn.Dispose();
+	}
+}
+catch(Exception ex){
+#>
+namespace MicroServiceCoreResposity.DbAccess.T4_Design_Time
+{
+	// Disable the warning.
+#pragma warning disable S101
+	//警告	S101 Rename class 'LanguageCultureT4' 
+	//to match pascal case naming rules, 
+	//consider using 'LanguageCultureT4'
+
+	//
+	// Code that uses obsolete API.
+	// ...
+
+	// Re-enable the warning.
+	//#pragma warning restore SYSLIB0021
+
+	/// <summary>
+	/// 訊息代碼資料表資訊
+	/// 針對資料、以及欄位檢核
+	/// </summary>
+	public static class LanguageCultureT4RowsCounts
+	{   /// <summary>
+		/// 資料總筆數
+		/// </summary>
+		public const int DataCountForDataCheck = 0;
+		public const int FieldCountForDataCheck = 0;
+
+	}
+	/// <summary>
+	/// 訊息代碼簡述<br/>
+	/// 可以VendorLangModelTtFile.[代碼]時檢視
+	/// </summary>
+	public static class LanguageCultureT4
+	{
+	}
+}
+<#
+}
+#>
+
+<#+
+/* 
+* 編輯作者：ADD BY CALVIN AT 2023/03/23
+* 說　　明：移除指定字元符號
+* 備　　註：
+* 引　　用：
+* ░░░░░░░░░
+* 修改歷程：
+*  2023/03/23 初版
+*  2023/03/23 EDIT BY CALVIN
+* 	說明：
+* 	備註：
+*/
+private static string RemoveSign(string str)
+{
+	str = str.Replace(" ", "");
+	str = str.Replace("/", "");
+	return str;
+}
+#>

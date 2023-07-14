@@ -1,0 +1,228 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+//這 assembly指令使指定程序集可用於您的模板代碼
+//其方式與 Visual Studio 項目的引用部分相同。
+//您不需要包含對 System.dll 的引用，它會自動引用。 
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Configuration" #>
+<#@ assembly name="System.Xml.dll" #>
+//這 import指令允許您使用類型而不使用它們的完全限定名稱，
+//方式與 using普通程序文件中的指令。
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.IO" #>
+
+// 直接引入命名空間T4會視為有效套件
+// 這部分的引入是給成為有效物件時使用
+// 檢視 .cs 文件如果有發生錯誤，VS也會提示
+
+#region SonarLint Disabled 放置區域
+#pragma warning disable VSSpell001 // Spell Check
+#pragma warning disable IDE1006 // 命名樣式
+#pragma warning disable S101 // Types should be named in PascalCase
+#pragma warning disable CS8618 // 退出建構函式時，不可為 Null 的欄位必須包含非 Null 值。請考慮宣告為可為 Null。
+#pragma warning disable S1118 // Utility classes should not have public constructors
+#endregion
+
+using Dapper.Contrib.Extensions;
+using MicroServiceCoreLibrary.Attributes;
+using MicroServiceCoreResposity.Entity;
+using System;
+using System.ComponentModel;
+<#
+try
+{
+	///讀取文字設定檔
+	///string HostName = Environment.MachineName;
+	string HostName = "GenerateEventMultilingualCodeTableT4";
+	string FileName = this.Host.ResolvePath(@"./Configs/" + HostName + ".txt");
+	IEnumerable<string> ReadLinesList = File.ReadLines(FileName);
+	string[] ReadAllLinesList = File.ReadAllLines(FileName);
+
+	////參數設定區
+	string ConnectionConfig = "";								///參數1：資料庫連線
+	string TableName = "";											///參數2：資料表名稱(來源TXT請加上單引號)
+	string NameSpace = "";											///參數3：命名空間路徑定義
+	string ModelFunctionDescription = "";					///參數4：模型類別功能說明
+	string ModelName = "";										///參數5：模型名稱
+	string InheritModelName = "";								///參數6：繼承類別名稱
+	
+	//衍生變數
+	string DataCheckName = "";									///資料檢核名稱(DataCheck_+資料表名稱)
+
+	//一般變數
+	string CsharpDataType = "";
+	string SchemaName = "";
+	string RealTableName = "";
+	
+	//取參數對應
+	//來源設定檔案*.txt空空白排行數會發生索引錯誤
+	int idx = 1;
+	foreach (string item in ReadAllLinesList) {
+		switch(idx)
+		{
+			case 1:
+				//Connection String Name(資料庫連線)
+				ConnectionConfig = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 2:
+				//Table Name(資料表名稱)
+				TableName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				SchemaName = "[Table(\"" + TableName + "\")]";
+				break;
+			case 3:
+				//NameSpace Name(命名空間)
+				NameSpace = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 4:
+				//Model Function Description(模型類別功能說明)
+				ModelFunctionDescription = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 5:
+				//Model Name(模型名稱)
+				ModelName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+			case 6:
+				//Inherit Model Name(繼承類別名稱)
+				InheritModelName = item.Split('：')[1].ToString().TrimStart().TrimEnd();
+				break;
+		}
+		idx++;
+	}
+
+	//DataCheckName(DataCheck_+資料表名稱)
+	DataCheckName = "DataCheck_" + ModelName;
+	RealTableName = TableName.Replace("'", "");
+
+	using (SqlConnection conn = new SqlConnection())
+	{
+		string sql = @"SELECT * FROM @table";
+
+		conn.ConnectionString = ConnectionConfig;
+		conn.Open();
+
+		List<string> strs = new List<string>();
+		bool lackBrief = false;
+		
+		sql = sql.Replace("@table", RealTableName);
+		SqlCommand cmd = new SqlCommand(sql, conn);
+		cmd.Parameters.Clear();
+		SqlDataReader dr = cmd.ExecuteReader();
+		DataTable dt = new DataTable();
+		dt.Load(dr);
+
+		foreach (DataRow row in dt.Rows)
+		{
+			if(string.IsNullOrEmpty(row["SUMMARY"].ToString().Trim()))
+			{
+				lackBrief = true;
+			}
+			strs.Add($"/// <summary>\r\n/// {row["SUMMARY"]}\r\n/// </summary>\r\npublic static string {RemoveSign(row["TYPE"].ToString() + "_" + row["CODE"].ToString())} {"{get; set;} = \"" + row["CODE"] + "^" + row["TYPE"] + "^" + row["CH_MSG"] + "^" + row["EN_MSG"] + "^" + row["SUMMARY"] + "\";"}");
+		}
+	
+		string sqlDataCount = @"SELECT * FROM @table";
+		string sqlFieldCount = @"
+							SELECT 
+							  column_name 
+							FROM 
+							  information_schema.columns 
+							WHERE 
+							  table_name = @table
+						";
+
+		List<string> strsDataCount = new List<string>();
+		List<string> strsFieldCount = new List<string>();
+		List<string> strsLackBrief = new List<string>();
+
+		RealTableName = TableName.Replace("'", "");
+		
+		sqlDataCount = sqlDataCount.Replace("@table", RealTableName);
+		SqlCommand cmdDataCount = new SqlCommand(sqlDataCount, conn);
+		cmdDataCount.Parameters.Clear();
+		SqlDataReader drDataCount = cmdDataCount.ExecuteReader();
+		DataTable dtDataCount = new DataTable();
+		dtDataCount.Load(drDataCount);
+		strsDataCount.Add($"///<summary>\r\n/// 資料表筆數\r\n///</summary>\r\npublic const int DataCount_{ModelName} = {dtDataCount.Rows.Count};");
+		
+		sqlFieldCount = sqlFieldCount.Replace("@table", TableName);
+		cmdDataCount.Parameters.Clear();
+		SqlDataReader drFieldCount = cmdDataCount.ExecuteReader();
+		DataTable dtFieldCount = new DataTable();
+		dtFieldCount.Load(drFieldCount);
+		strsFieldCount.Add($"///<summary>\r\n/// 資料表欄位數\r\n///</summary>\r\npublic const int FieldCount_{ModelName} = {dtFieldCount.Columns.Count};");
+	
+		if (lackBrief)
+		{
+			strsLackBrief.Add($"///<summary>\r\n/// 註解有(false)無(true)填寫\r\n///</summary>\r\npublic const bool LackSummary_{ModelName} = true;");
+		}
+		else
+		{
+			strsLackBrief.Add($"///<summary>\r\n/// 註解有(false)無(true)填寫\r\n///</summary>\r\npublic const bool LackSummary_{ModelName} = false;");
+		}
+#>
+
+namespace <#= NameSpace #>
+{
+	/// <summary>
+	/// 多語系程序處理訊息前端系統代碼對應表
+	/// </summary>
+	public static class <#= DataCheckName #>
+	{	
+		<#= string.Join("\r\n    ",strsDataCount)#>
+		<#= string.Join("\r\n    ",strsFieldCount)#>
+		<#= string.Join("\r\n    ",strsLackBrief)#>
+	}
+	/// <summary>
+	/// 📒<#= ModelFunctionDescription #>
+	/// 📒<#= ModelName #>
+	/// </summary>
+	<#= SchemaName #>
+<#if(InheritModelName == ""){#>
+public class <#= ModelName #>
+<#}#>
+<#else{#>
+public class <#= ModelName #> : <#= InheritModelName #>
+<#}#>
+	{
+		<#= string.Join("\r\n    ",strs)#>
+	}
+}
+<#
+conn.Close();
+conn.Dispose();
+	}
+}
+catch(Exception ex)
+{
+	throw new Exception(ex.Message);
+}
+#>
+
+<#+
+/* 
+* 編輯作者：ADD BY CALVIN AT 2023/03/23
+* 說　　明：移除指定字元符號
+* 備　　註：
+* 引　　用：
+* ░░░░░░░░░
+* 修改歷程：
+*  2023/03/23 初版
+*  2023/03/23 EDIT BY CALVIN
+* 	說明：
+* 	備註：
+*/
+private static string RemoveSign(string str)
+{
+	str = str.Replace(" ", "");
+	str = str.Replace("/", "");
+	return str;
+}
+#>

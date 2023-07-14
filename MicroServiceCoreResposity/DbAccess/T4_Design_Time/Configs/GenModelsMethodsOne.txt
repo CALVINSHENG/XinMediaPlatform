@@ -1,0 +1,4 @@
+﻿ConnectionString is
+Data Source=S-DB-ELDPLAT; Initial Catalog=vehicle; User ID=U_Vehicle_AP;Password=Ah*TVeJmYP
+TableName is
+bus

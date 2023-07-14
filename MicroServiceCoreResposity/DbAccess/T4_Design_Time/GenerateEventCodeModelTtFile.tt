@@ -1,0 +1,167 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+
+using System;
+<#
+try{
+	using (SqlConnection conn = new SqlConnection())
+{
+	string table = "MESSAGE";
+
+	string sql = @"SELECT * FROM @table WITH(NOLOCK)";
+	string sqlSFC = @"
+						SELECT 
+						  column_name 
+						FROM 
+						  information_schema.columns WITH(NOLOCK) 
+						WHERE 
+						  table_name = @tableName
+					";
+
+	conn.ConnectionString = @"Data Source=S-DB-ELDPLAT; Initial Catalog=vehicle; User ID=U_Vehicle_AP;Password=Ah*TVeJmYP";
+	conn.Open();
+
+	List<string> strs = new List<string>();
+	List<string> strsInfor = new List<string>();
+	bool lackBrief = false;
+
+	sql = sql.Replace("@table", table);
+	SqlCommand cmd = new SqlCommand(sql, conn);
+	cmd.Parameters.Clear();
+	SqlDataReader dr = cmd.ExecuteReader();
+	DataTable dt = new DataTable();
+	dt.Load(dr);
+
+	strsInfor.Add($"public const int DataCount = {dt.Rows.Count};");
+	foreach (DataRow row in dt.Rows)
+	{
+		if(string.IsNullOrEmpty(row["SUMMARY"].ToString().Trim()))
+		{
+			lackBrief = true;
+		}
+		strs.Add($"/// <summary>\r\n/// {row["SUMMARY"]}\r\n/// </summary>\r\npublic static string {RemoveSign(row["TYPE"].ToString() + "_" + row["CODE"].ToString())} {"{get; set;} = \"" + row["CODE"] + "^" + row["TYPE"] + "^" + row["CH_MSG"] + "^" + row["EN_MSG"] + "\";"}");
+	}
+	sqlSFC = sqlSFC.Replace("@tableName", table);
+	SqlCommand cmdSFC = new SqlCommand(sqlSFC, conn);
+	cmd.Parameters.Clear();
+	SqlDataReader drSFC = cmd.ExecuteReader();
+	DataTable dtSFC = new DataTable();
+	dtSFC.Load(drSFC);
+	strsInfor.Add($"\r\npublic const int FieldCount = {dtSFC.Columns.Count};");
+	if(lackBrief)
+	{
+		strsInfor.Add($"\r\npublic const bool LackSummary = true;");
+	}
+	else
+	{
+		strsInfor.Add($"\r\npublic const bool LackSummary = false;");
+	}
+#>
+namespace MicroServiceCoreResposity.DbAccess.T4_Design_Time
+{
+	// Disable the warning.
+#pragma warning disable S101
+	//警告	S101 Rename class 'GenerateEventCodeModelTtFile' 
+	//to match pascal case naming rules, 
+	//consider using 'GenerateEventCodeModelTtFile'.	MicroServiceCoreLibrary
+
+	//
+	// Code that uses obsolete API.
+	// ...
+
+	// Re-enable the warning.
+	//#pragma warning restore SYSLIB0021
+
+	/// <summary>
+	/// 訊息代碼資料表資訊
+	/// </summary>
+	public static class GenerateEventCodeModelRowsCountsTtFile
+	{	/// <summary>
+		/// 資料總筆數
+		/// </summary>
+		<#= string.Join("\r\n    ",strsInfor)#>
+	}
+	/// <summary>
+	/// 訊息代碼簡述<br/>
+	/// 可以GenerateEventCodeModelTtFile.[代碼]時檢視
+	/// </summary>
+	///public static class GenerateEventCodeModelTtFile
+	public static class EventCode_Test
+	{
+		<#= string.Join("\r\n    ",strs)#>
+	}
+}
+<#
+		conn.Close();
+conn.Dispose();
+	}
+}
+catch(Exception ex){
+#>
+namespace MicroServiceCoreResposity.DbAccess.T4_Design_Time
+{
+	// Disable the warning.
+#pragma warning disable S101
+	//警告	S101 Rename class 'GenerateEventCodeModelTtFile' 
+	//to match pascal case naming rules, 
+	//consider using 'GenerateEventCodeModelTtFile'.	MicroServiceCoreLibrary
+
+	//
+	// Code that uses obsolete API.
+	// ...
+
+	// Re-enable the warning.
+	//#pragma warning restore SYSLIB0021
+
+	/// <summary>
+	/// 訊息代碼資料表資訊
+	/// </summary>
+	public static class GenerateEventCodeModelRowsCountsTtFile
+	{	/// <summary>
+		/// 資料總筆數
+		/// </summary>
+		public const int DataCount = 0;
+		public const int FieldCount = 0;
+
+	}
+	/// <summary>
+	/// 訊息代碼簡述<br/>
+	/// 可以GenerateEventCodeModelTtFile.[代碼]時檢視
+	/// </summary>
+	public static class GenerateEventCodeModelTtFile
+	{
+	}
+}
+<#
+}
+#>
+
+<#+
+/* 
+* 編輯作者：ADD BY CALVIN AT 2023/01/13
+* 說　　明：移除指定字元符號
+* 備　　註：
+* 引　　用：
+* ░░░░░░░░░
+* 修改歷程：
+* 2023/01/13 初版
+* 2023/01/13 EDIT BY CALVIN
+* 	說明：
+* 	備註：
+*/
+private static string RemoveSign(string str)
+{
+	str = str.Replace(" ", "");
+	str = str.Replace("/", "");
+	return str;
+}
+#>

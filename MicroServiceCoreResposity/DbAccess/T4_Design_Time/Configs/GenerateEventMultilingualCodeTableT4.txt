@@ -1,0 +1,6 @@
+﻿Parameter1.資料庫連線：Data Source=S-DB-ELDPLAT; Initial Catalog=vehicle; User ID=U_Vehicle_AP;Password=Ah*TVeJmYP
+Parameter2.資料表名稱(請加上單引號)：'message'
+Parameter3.命名空間：MicroServiceCoreResposity.DbAccess.T4_Design_Time
+Parameter4.模型類別功能說明：多語系程序處理訊息前端系統代碼對應表
+Parameter5.模型類別名稱：EventCode
+Parameter6.繼承類別名稱：

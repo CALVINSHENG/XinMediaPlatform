@@ -1,0 +1,67 @@
+﻿<#@ template language="C#" debug="True" hostspecific="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+<#@ parameter type="System.String" name="strDbConnection" #>
+
+using System;
+<#
+	using (SqlConnection conn = new SqlConnection())
+	{
+		string table = "MESSAGE";
+		string sql = @"SELECT * FROM @table";
+
+		conn.ConnectionString = @"Data Source=ITTC-04509-0088; Initial Catalog=ELDPLAT; User ID=sa;Password=!qaz#EDCLionTravel789";
+		conn.Open();
+		sql = sql.Replace("@table", table);
+		SqlCommand cmd = new SqlCommand(sql, conn);
+		cmd.Parameters.Clear();		
+		//cmd.Parameters.AddWithValue("@cid", 10);
+		SqlDataReader dr = cmd.ExecuteReader();
+		DataTable dt = new DataTable();
+		dt.Load(dr);
+		List<string> strs = new List<string>();
+		foreach (DataRow row in dt.Rows)
+		{ 
+			strs.Add($"{removeSign(row["TYPE"].ToString()+row["CODE"].ToString())}={row["CODE"]}");
+		}
+#>
+namespace MicroServiceCoreResposity.DbAccess.T4_Design_Time
+{
+	// Disable the warning.
+#pragma warning disable S101
+	//警告	S101 Rename class 'GenerateEventCodeEnumTtFile' 
+	//to match pascal case naming rules, 
+	//consider using 'GenerateEventCodeEnumTtFile'.	MicroServiceCoreLibrary
+
+	//
+	// Code that uses obsolete API.
+	// ...
+
+	// Re-enable the warning.
+	//#pragma warning restore SYSLIB0021
+
+	public class GenerateEventCodeEnumTtFile
+	{
+		public enum <#=table#>
+		{
+			<#= string.Join(",\r\n    ",strs)#>
+		}
+	}
+}
+<#
+		
+	}
+#>
+
+<#+
+	public string DbConnectionString { get; set; }
+	private static string removeSign(string str)
+	{
+		str = str.Replace(" ","");
+		str = str.Replace("/", "");
+		return str;
+	}
+#>
