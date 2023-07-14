@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XinMedia</name>
+    </assembly>
+    <members>
+        <member name="T:AuthorizationCheckService.AuthorizeCheckOperationFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AuthorizationCheckService.AuthorizeCheckOperationFilter.#ctor(Microsoft.AspNetCore.Routing.EndpointDataSource)">
+            <summary>
+            
+            </summary>
+            <param name="endpointDataSource"></param>
+        </member>
+        <member name="M:AuthorizationCheckService.AuthorizeCheckOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:XinMedia.Controllers.BackEnd.XinMediaMemberController">
+            <summary>
+            接口層
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:XinMedia.Controllers.BackEnd.XinMediaMemberController._xinmedia">
+            <summary>
+            The moduletemplate
+            </summary>
+        </member>
+        <member name="M:XinMedia.Controllers.BackEnd.XinMediaMemberController.#ctor(XinMedia.Services.Interface.IBackEnd)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XinMedia.Controllers.BackEnd.XinMediaMemberController"/> class.
+            建構子
+            </summary>
+            <param name="xinmedia">The xinmedia.</param>
+        </member>
+        <member name="M:XinMedia.Controllers.BackEnd.XinMediaMemberController.TestMember">
+            <summary>
+            Tests the member.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMedia.Controllers.FrontEnd.XinMediaPopularController">
+            <summary>
+            接口層
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:XinMedia.Controllers.FrontEnd.XinMediaPopularController._xinmedia">
+            <summary>
+            The moduletemplate
+            </summary>
+        </member>
+        <member name="M:XinMedia.Controllers.FrontEnd.XinMediaPopularController.#ctor(XinMedia.Services.Interface.IFrontEnd)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XinMedia.Controllers.FrontEnd.XinMediaPopularController"/> class.
+            建構子
+            </summary>
+            <param name="xinmedia">The xinmedia.</param>
+        </member>
+        <member name="M:XinMedia.Controllers.FrontEnd.XinMediaPopularController.Test">
+            <summary>
+            Tests this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMedia.Models.TArticleEntity">
+            <summary>
+            Model資料表
+            </summary>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.no">
+            <summary>
+            Gets or sets the no.
+            </summary>
+            <value>
+            The no.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.member_id">
+            <summary>
+            Gets or sets the member identifier.
+            </summary>
+            <value>
+            The member identifier.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>
+            The title.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.image">
+            <summary>
+            Gets or sets the image.
+            </summary>
+            <value>
+            The image.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.brief">
+            <summary>
+            Gets or sets the brief.
+            </summary>
+            <value>
+            The brief.
+            </value>
+        </member>
+        <member name="P:XinMedia.Models.TArticleEntity.content">
+            <summary>
+            Gets or sets the content.
+            </summary>
+            <value>
+            The content.
+            </value>
+        </member>
+        <member name="T:XinMedia.Services.BackEnd.BackEndBusiness">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:MicroServiceCoreResposity.Implementation.DoBase" />
+            <seealso cref="T:XinMedia.Services.Interface.IBackEnd" />
+        </member>
+        <member name="F:XinMedia.Services.BackEnd.BackEndBusiness._baselogger">
+            <summary>
+            The baselogger
+            </summary>
+        </member>
+        <member name="F:XinMedia.Services.BackEnd.BackEndBusiness._httpContextAccessor">
+            <summary>
+            The HTTP context accessor
+            </summary>
+        </member>
+        <member name="P:XinMedia.Services.BackEnd.BackEndBusiness.SEGMENTSYMBOL">
+            <summary>
+            Gets or sets the segmentsymbol.
+            </summary>
+            <value>
+            The segmentsymbol.
+            </value>
+        </member>
+        <member name="M:XinMedia.Services.BackEnd.BackEndBusiness.#ctor(Microsoft.Extensions.Logging.ILogger{MicroServiceCoreLibrary.Logger.BaseLogger},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XinMedia.Services.BackEnd.BackEndBusiness"/> class.
+            建構子
+            </summary>
+            <param name="baselogger">The baselogger.</param>
+            <param name="httpContextAccessor">The HTTP context accessor.</param>
+        </member>
+        <member name="M:XinMedia.Services.BackEnd.BackEndBusiness.TestMember">
+            <summary>
+            Tests this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMedia.Services.Interface.IBackEnd">
+            <summary>
+            介面層
+            </summary>
+        </member>
+        <member name="M:XinMedia.Services.Interface.IBackEnd.TestMember">
+            <summary>
+            Tests the member.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMedia.Services.Interface.IFrontEnd">
+            <summary>
+            介面層
+            </summary>
+        </member>
+        <member name="M:XinMedia.Services.Interface.IFrontEnd.Test">
+            <summary>
+            Tests this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMedia.Services.FrontEnd.FrontEndBusiness">
+            <summary>
+            實作商業邏輯層
+            </summary>
+            <seealso cref="T:MicroServiceCoreResposity.Implementation.DoBase" />
+            <seealso cref="T:XinMedia.Services.Interface.IFrontEnd" />
+        </member>
+        <member name="F:XinMedia.Services.FrontEnd.FrontEndBusiness._baselogger">
+            <summary>
+            The baselogger
+            </summary>
+        </member>
+        <member name="F:XinMedia.Services.FrontEnd.FrontEndBusiness._httpContextAccessor">
+            <summary>
+            The HTTP context accessor
+            </summary>
+        </member>
+        <member name="P:XinMedia.Services.FrontEnd.FrontEndBusiness.SEGMENTSYMBOL">
+            <summary>
+            Gets or sets the segmentsymbol.
+            </summary>
+            <value>
+            The segmentsymbol.
+            </value>
+        </member>
+        <member name="M:XinMedia.Services.FrontEnd.FrontEndBusiness.#ctor(Microsoft.Extensions.Logging.ILogger{MicroServiceCoreLibrary.Logger.BaseLogger},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:XinMedia.Services.FrontEnd.FrontEndBusiness"/> class.
+            建構子
+            </summary>
+            <param name="baselogger">The baselogger.</param>
+            <param name="httpContextAccessor">The HTTP context accessor.</param>
+        </member>
+        <member name="M:XinMedia.Services.FrontEnd.FrontEndBusiness.Test">
+            <summary>
+            Tests this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:XinMediaService.Versions.XinMedaiInfoVersion">
+            <summary>
+            登入者驗證授權微服務新增功能版號
+            
+            重要：
+            要配合Select a definition
+            下拉選單的版本功能配號
+            </summary>
+        </member>
+        <member name="P:XinMediaService.Versions.XinMedaiInfoVersion.v1">
+            <summary>
+            Gets or sets the v1.
+            前台SWAGGER
+            </summary>
+            <value>
+            The v1.
+            </value>
+        </member>
+        <member name="P:XinMediaService.Versions.XinMedaiInfoVersion.v2">
+            <summary>
+            Gets or sets the v2.
+            後台SWAGGER
+            </summary>
+            <value>
+            The v2.
+            </value>
+        </member>
+        <member name="T:XinMediaService.Versions.ConflictNaming">
+            <summary>
+            Swagger方法衝突命名
+            </summary>
+        </member>
+        <member name="P:XinMediaService.Versions.ConflictNaming.X">
+            <summary>
+            Naming
+            </summary>
+        </member>
+    </members>
+</doc>
