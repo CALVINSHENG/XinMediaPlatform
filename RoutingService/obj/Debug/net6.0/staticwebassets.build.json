@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "10rxBWiKbD59Q+5iY8obK7LXD/qVeBV2yTmzc9+xPmw=",
+  "Source": "RoutingService",
+  "BasePath": "_content/RoutingService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
